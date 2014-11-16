@@ -23,9 +23,10 @@ Kimsufi servers are very interesting but extremely difficult to obtain. This scr
 
 The script works on Python 2.x and 3.x. It's just a simple script, so no _setup.py_ is offer :
 
-    git clone https://github.com/ncrocfer/kimsufi-availability.git
-    cd kimsufi-availability
-    python kimsufi.py
+    $ git clone https://github.com/ncrocfer/kimsufi-availability.git
+    $ cd kimsufi-availability
+    $ pip install -r requirements.txt
+    $ python kimsufi.py
 
 ## Using Cron
 
