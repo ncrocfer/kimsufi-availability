@@ -18,6 +18,20 @@ Kimsufi servers are very interesting but extremely difficult to obtain. This scr
       kimsufi.py KS-1 KS-3
       kimsufi.py KS-1 --mail
 
+## Output example
+
+    $ python kimsufi.py KS-1
+
+    KS-1
+    ====
+    Gravelines : [OK]
+    Strasbourg : unavailable
+    Roubaix : unavailable
+    Beauharnois : unavailable
+
+    =======
+    RESULT : 1 server is available on Kimsufi
+    =======
 
 ## Installation
 
