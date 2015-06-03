@@ -24,6 +24,7 @@ import smtplib
 
 import requests
 import json
+import os
 
 from docopt import docopt
 
@@ -74,6 +75,8 @@ ZONES = {'gra': 'Gravelines',
          'rbx': 'Roubaix',
          'bhs': 'Beauharnois'}
 
+CURRENT_PATH = os.path.dirname(__file__)
+
 def get_city_name(zone):
 	# rbx-hz to rbx
 	zone = zone.split('-')[0]
@@ -104,7 +107,7 @@ def get_ref(name):
 def send_mail(output, total):
 
 	try:
-		with open('config.json') as data:
+		with open(os.path.join(CURRENT_PATH,'config.json')) as data:
 			config = json.load(data)
 			mail_host = config['email']['host']
 			mail_port = config['email']['port']
