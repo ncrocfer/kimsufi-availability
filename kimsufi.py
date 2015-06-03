@@ -79,6 +79,14 @@ ZONES = {'gra': 'Gravelines',
          'rbx': 'Roubaix',
          'bhs': 'Beauharnois'}
 
+def get_city_name(zone):
+	# rbx-hz to rbx
+	zone = zone.split('-')[0]
+	if any(zone == city for city in ZONES):
+		return ZONES[zone]
+	else:
+		return zone
+
 def get_servers(models):
 	"""Get the servers from the OVH API."""
 	
@@ -152,7 +160,7 @@ if __name__ == '__main__':
 			else:
 				availability = "[OK]"
 				total += 1
-			output += '{} : {}\n'.format(ZONES[z['zone']], availability)
+			output += '{} : {}\n'.format(get_city_name(z['zone']), availability)
 	
 	output += "\n=======\nRESULT : {0} server{1} {2} available on Kimsufi\n=======\n".format(
 		total,
