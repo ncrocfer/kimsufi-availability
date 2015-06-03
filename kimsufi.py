@@ -166,10 +166,9 @@ if __name__ == '__main__':
 		output += "{}\n".format("="*len(REFERENCES[k['reference']]))
 		
 		for z in k['zones']:
-			if z['availability'] == 'unavailable':
-				availability = z['availability']
-			else:
-				availability = "[OK]"
+			invalids = ['unavailable', 'unknown']
+			availability = z['availability']
+			if not availability in invalids:
 				total += 1
 			output += '{} : {}\n'.format(get_city_name(z['zone']), availability)
 	
