@@ -22,17 +22,11 @@ import sys
 import smtplib
 
 import requests
+import json
+
 from docopt import docopt
 
 VERSION = "1.0"
-
-MAIL_HOST = "smtp.gmail.com"
-MAIL_PORT = 587
-MAIL_USERNAME = "xxxxxx"
-MAIL_PASSWORD = "xxxxxx"
-
-MAIL_FROM = "xxxxxx@xxxxxx.xxx"
-MAIL_TO = "xxxxxx@xxxxxx.xxx"
 
 API_URL = "https://ws.ovh.com/dedicated/r2/ws.dispatcher/getAvailability2"
 REFERENCES = REFERENCES = {
@@ -107,7 +101,22 @@ def get_ref(name):
 
 
 def send_mail(output, total):
-	"""Send a mail to <MAIL_TO>."""
+
+	try:
+		with open('config.json') as data:
+			config = json.load(data)
+			mail_host = config['email']['host']
+			mail_port = config['email']['port']
+			mail_username = config['email']['username']
+			mail_password = config['email']['password']
+			mail_from = config['email']['mail']
+			mail_to = config['email']['mail']
+
+	except IOError:
+		print('Rename config.json.sample to config.json and edit it')
+		return False
+
+	"""Send a mail to <mail_to>."""
 	
 	subject = "{0} server{1} {2} available on Kimsufi".format(
 		total,
@@ -115,29 +124,31 @@ def send_mail(output, total):
 		["is", "are"][total>1]
 	)
 	headers = "From: {}\r\nTo: {}\r\nSubject: {}\r\n\r\n".format(
-		MAIL_FROM,
-		MAIL_TO,
+		mail_from,
+		mail_to,
 		subject
 	)
 	
 	try:
-		server = smtplib.SMTP(MAIL_HOST, MAIL_PORT)
+		server = smtplib.SMTP(mail_host, mail_port)
 	except smtplib.socket.gaierror:
 		return False
-		
+	
 	server.ehlo()
 	server.starttls()
 	server.ehlo()
 	
 	try:
-		server.login(MAIL_USERNAME, MAIL_PASSWORD)
+		server.login(mail_username, mail_password)
 	except smtplib.SMTPAuthenticationError:
+		print('SMPT Auth Error!')
 		return False
 	
 	try:
-		server.sendmail(MAIL_FROM, MAIL_TO, headers + output)
+		server.sendmail(mail_from, mail_to, headers + output)
 		return True
 	except Exception:
+		print('Error sending email!')
 		return False
 	finally:
 		server.close()
@@ -170,6 +181,7 @@ if __name__ == '__main__':
 	
 	if total != 0 :
 		if arguments['--mail']:
+			print(output)
 			send_mail(output, total)
 		else:
 			print(output)
