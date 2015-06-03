@@ -4,6 +4,7 @@
 		"port": 587,
 		"username": "",
 		"password": "",
-		"mail": ""
+		"mail_from": "",
+		"mail_to": ""
 	}
 }

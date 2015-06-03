@@ -113,8 +113,8 @@ def send_mail(output, total):
 			mail_port = config['email']['port']
 			mail_username = config['email']['username']
 			mail_password = config['email']['password']
-			mail_from = config['email']['mail']
-			mail_to = config['email']['mail']
+			mail_from = config['email']['mail_from']
+			mail_to = config['email']['mail_to']
 
 	except IOError:
 		print('Rename config.json.sample to config.json and edit it')
