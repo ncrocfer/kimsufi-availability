@@ -35,18 +35,49 @@ MAIL_FROM = "xxxxxx@xxxxxx.xxx"
 MAIL_TO = "xxxxxx@xxxxxx.xxx"
 
 API_URL = "https://ws.ovh.com/dedicated/r2/ws.dispatcher/getAvailability2"
-REFERENCES = {'142sk1': 'KS-1',
-              '142sk2': 'KS-2',
-              '142sk3': 'KS-3',
-              '142sk4': 'KS-4',
-              '142sk5': 'KS-5A',
-              '142sk8': 'KS-5B',
-              '142sk6': 'KS-6'}
+REFERENCES = REFERENCES = {
+  "150sk10": "KS-1",
+  "150sk20": "KS-2",
+  "150sk21": "KS-2",
+  "150sk22": "KS-2 SSD",
+  "150sk30": "KS-3",
+  "150sk31": "KS-3",
+  "150sk40": "KS-4",
+  "150sk41": "KS-4",
+  "150sk42": "KS-4",
+  "150sk50": "KS-5",
+  "150sk60": "KS-6",
+
+  "141game1": "GAME-1",
+  "141game2": "GAME-2",
+  "141game3": "GAME-3",
+
+  "142sys4":  "SYS-IP-1",
+  "142sys5":  "SYS-IP-2",
+  "142sys8":  "SYS-IP-4",
+  "142sys6":  "SYS-IP-5",
+  "142sys10": "SYS-IP-5S",
+  "142sys7":  "SYS-IP-6",
+  "142sys9":  "SYS-IP-6S",
+
+  "143sys13": "E3-SSD-1",
+  "143sys10": "E3-SSD-2",
+  "143sys11": "E3-SSD-3",
+  "143sys12": "E3-SSD-4",
+  
+  "143sys4":  "E3-SAT-1",
+  "143sys1":  "E3-SAT-2",
+  "143sys2":  "E3-SAT-3",
+  "143sys3":  "E3-SAT-4",
+  
+  "141bk1":   "BK-8T",
+  "141bk2":   "BK-24T"
+}
+
 ZONES = {'gra': 'Gravelines',
          'sbg': 'Strasbourg',
          'rbx': 'Roubaix',
          'bhs': 'Beauharnois'}
-
 
 def get_servers(models):
 	"""Get the servers from the OVH API."""
