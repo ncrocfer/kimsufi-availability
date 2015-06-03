@@ -76,7 +76,7 @@ ZONES = {'gra': 'Gravelines',
 def get_city_name(zone):
 	# rbx-hz to rbx
 	zone = zone.split('-')[0]
-	if any(zone == city for city in ZONES):
+	if zone in ZONES:
 		return ZONES[zone]
 	else:
 		return zone
