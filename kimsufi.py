@@ -77,7 +77,7 @@ ZONES = {'gra': 'Gravelines',
 
 CURRENT_PATH = os.path.dirname(__file__)
 
-def get_city_name(zone):
+def get_zone_name(zone):
 	# rbx-hz to rbx
 	zone = zone.split('-')[0]
 	if zone in ZONES:
@@ -174,7 +174,7 @@ if __name__ == '__main__':
 			availability = z['availability']
 			if not availability in invalids:
 				total += 1
-			output += '{} : {}\n'.format(get_city_name(z['zone']), availability)
+			output += '{} : {}\n'.format(get_zone_name(z['zone']), availability)
 	
 	output += "\n=======\nRESULT : {0} server{1} {2} available on Kimsufi\n=======\n".format(
 		total,
