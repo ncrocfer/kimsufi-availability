@@ -1,0 +1,10 @@
+{
+	"email": {
+		"host": "smtp.mailgun.org",
+		"port": 587,
+		"username": "",
+		"password": "",
+		"mail_from": "",
+		"mail_to": ""
+	}
+}
