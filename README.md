@@ -24,7 +24,7 @@ Kimsufi servers are very interesting but extremely difficult to obtain. This scr
 
     KS-1
     ====
-    Gravelines : [OK]
+    Gravelines : 1H-high
     Strasbourg : unavailable
     Roubaix : unavailable
     Beauharnois : unavailable
@@ -41,6 +41,23 @@ The script works on Python 2.x and 3.x. It's just a simple script, so no _setup.
     $ cd kimsufi-availability
     $ pip install -r requirements.txt
     $ python kimsufi.py
+
+## Mail configuration
+
+A mail can be sent with the `--mail` option. You can configure it with a `config.json` file : 
+
+    $ cp config.json.sample config.json
+    $ vim config.json
+    {
+        "email": {
+                "host": "...",
+                "port": 587,
+                "username": "...",
+                "password": "...",
+                "mail_from": "...",
+                "mail_to": "..."
+        }
+    }
 
 ## Using Cron
 
